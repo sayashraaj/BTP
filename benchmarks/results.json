@@ -1,0 +1,838 @@
+{
+  "timestamp": "2026-06-28T20:18:50",
+  "3d_matrix": [
+    {
+      "name": "Example 1 (n=2, k=2)",
+      "method": "3D Matrix",
+      "status": "Optimal",
+      "objective": 14.0,
+      "tour": [
+        1,
+        2,
+        1
+      ],
+      "u_vals": {
+        "1": 0.0,
+        "2": 0.0
+      },
+      "t_vals": {
+        "1": 0.0,
+        "2": 5.0,
+        "3": 14.0
+      },
+      "solve_time_seconds": 1.0871,
+      "wall_time_seconds": 1.0877,
+      "verification_passed": true,
+      "checks": [
+        {
+          "check_name": "tour_completeness_3d",
+          "passed": true,
+          "detail": "All nodes visited"
+        },
+        {
+          "check_name": "no_subtours_3d",
+          "passed": true,
+          "detail": "u-values strictly increasing among non-depot nodes"
+        },
+        {
+          "check_name": "mtz_3d",
+          "passed": true,
+          "detail": "All MTZ constraints satisfied"
+        },
+        {
+          "check_name": "time_feasibility_3d",
+          "passed": true,
+          "detail": "All departure times are feasible"
+        }
+      ]
+    },
+    {
+      "name": "Example 2 (n=3, k=2)",
+      "method": "3D Matrix",
+      "status": "Optimal",
+      "objective": 1200.0,
+      "tour": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "u_vals": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 1.0
+      },
+      "t_vals": {
+        "1": 0.0,
+        "2": 5.0,
+        "3": 60.0,
+        "4": 1200.0
+      },
+      "solve_time_seconds": 0.0331,
+      "wall_time_seconds": 0.0341,
+      "verification_passed": true,
+      "checks": [
+        {
+          "check_name": "tour_completeness_3d",
+          "passed": true,
+          "detail": "All nodes visited"
+        },
+        {
+          "check_name": "no_subtours_3d",
+          "passed": true,
+          "detail": "u-values strictly increasing among non-depot nodes"
+        },
+        {
+          "check_name": "mtz_3d",
+          "passed": true,
+          "detail": "All MTZ constraints satisfied"
+        },
+        {
+          "check_name": "time_feasibility_3d",
+          "passed": true,
+          "detail": "All departure times are feasible"
+        }
+      ]
+    },
+    {
+      "name": "Example 3 (n=3, k=2, subtour check)",
+      "method": "3D Matrix",
+      "status": "Optimal",
+      "objective": 1200.0,
+      "tour": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "u_vals": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 1.0
+      },
+      "t_vals": {
+        "1": 0.0,
+        "2": 5.0,
+        "3": 60.0,
+        "4": 1200.0
+      },
+      "solve_time_seconds": 0.0326,
+      "wall_time_seconds": 0.0336,
+      "verification_passed": true,
+      "checks": [
+        {
+          "check_name": "tour_completeness_3d",
+          "passed": true,
+          "detail": "All nodes visited"
+        },
+        {
+          "check_name": "no_subtours_3d",
+          "passed": true,
+          "detail": "u-values strictly increasing among non-depot nodes"
+        },
+        {
+          "check_name": "mtz_3d",
+          "passed": true,
+          "detail": "All MTZ constraints satisfied"
+        },
+        {
+          "check_name": "time_feasibility_3d",
+          "passed": true,
+          "detail": "All departure times are feasible"
+        }
+      ]
+    },
+    {
+      "name": "Example 4 (n=4, k=3)",
+      "method": "3D Matrix",
+      "status": "Optimal",
+      "objective": 11.0,
+      "tour": [
+        1,
+        2,
+        3,
+        4,
+        1
+      ],
+      "u_vals": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 1.0,
+        "4": 2.0
+      },
+      "t_vals": {
+        "1": 0.0,
+        "2": 5.0,
+        "3": 10.0,
+        "4": 11.0,
+        "5": 11.0
+      },
+      "solve_time_seconds": 0.0433,
+      "wall_time_seconds": 0.0454,
+      "verification_passed": true,
+      "checks": [
+        {
+          "check_name": "tour_completeness_3d",
+          "passed": true,
+          "detail": "All nodes visited"
+        },
+        {
+          "check_name": "no_subtours_3d",
+          "passed": true,
+          "detail": "u-values strictly increasing among non-depot nodes"
+        },
+        {
+          "check_name": "mtz_3d",
+          "passed": true,
+          "detail": "All MTZ constraints satisfied"
+        },
+        {
+          "check_name": "time_feasibility_3d",
+          "passed": true,
+          "detail": "All departure times are feasible"
+        }
+      ]
+    }
+  ],
+  "tetn": [
+    {
+      "name": "MDA3: Chennai->Vijayawada->Warangal->Chennai (thesis MDA1 route)",
+      "method": "TETN MDA3",
+      "status": "Optimal",
+      "objective": 79800.0,
+      "network_stats": {
+        "original_trains": 12873,
+        "original_rows": 237449,
+        "pruned_trains": 198,
+        "pruned_rows": 6258,
+        "removed_trains": 12675,
+        "reduction_pct": 97.36,
+        "final_nodes": 12516,
+        "final_links": 136561
+      },
+      "network_build_seconds": 1.5701,
+      "solve_time_seconds": 597.8846,
+      "total_time_seconds": 605.6987,
+      "verification_passed": false,
+      "tour_node_count": 16,
+      "tour_summary": [
+        {
+          "node_id": 2677,
+          "train_id": "12621",
+          "train_name": "TAMIL NADU SF EXPRESS",
+          "time_seconds": 79200,
+          "station": "CHENNAI CENTRAL"
+        },
+        {
+          "node_id": 2678,
+          "train_id": "12621",
+          "train_name": "TAMIL NADU SF EXPRESS",
+          "time_seconds": 101400,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 4213,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 103800,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 4214,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 107040,
+          "station": "MADHIRA"
+        },
+        {
+          "node_id": 4215,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 107100,
+          "station": "MADHIRA"
+        },
+        {
+          "node_id": 4216,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 108540,
+          "station": "KHAMMAM"
+        },
+        {
+          "node_id": 4217,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 108600,
+          "station": "KHAMMAM"
+        },
+        {
+          "node_id": 4218,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 111540,
+          "station": "MAHBUBABAD"
+        },
+        {
+          "node_id": 4219,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 111600,
+          "station": "MAHBUBABAD"
+        },
+        {
+          "node_id": 4220,
+          "train_id": "12761",
+          "train_name": "TIRUPATI - KARIMNAGAR SF EXPRESS",
+          "time_seconds": 114300,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 10163,
+          "train_id": "22416",
+          "train_name": "ANDHRA PRADESH AC SF EXPRESS",
+          "time_seconds": 114600,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 10164,
+          "train_id": "22416",
+          "train_name": "ANDHRA PRADESH AC SF EXPRESS",
+          "time_seconds": 121140,
+          "station": "KHAMMAM"
+        },
+        {
+          "node_id": 10165,
+          "train_id": "22416",
+          "train_name": "ANDHRA PRADESH AC SF EXPRESS",
+          "time_seconds": 121200,
+          "station": "KHAMMAM"
+        },
+        {
+          "node_id": 10166,
+          "train_id": "22416",
+          "train_name": "ANDHRA PRADESH AC SF EXPRESS",
+          "time_seconds": 127800,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 645,
+          "train_id": "12270",
+          "train_name": "HAZRAT NIZAMUDDIN - CHENNAI CENTRAL DURONTO EXPRESS",
+          "time_seconds": 138600,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 646,
+          "train_id": "12270",
+          "train_name": "HAZRAT NIZAMUDDIN - CHENNAI CENTRAL DURONTO EXPRESS",
+          "time_seconds": 159000,
+          "station": "CHENNAI CENTRAL"
+        }
+      ],
+      "checks": [
+        {
+          "check_name": "tour_completeness_tetn",
+          "passed": false,
+          "detail": "Missing stations: {'WL', 'MAS', 'BZA'}"
+        },
+        {
+          "check_name": "flow_conservation_tetn",
+          "passed": true,
+          "detail": "Flow conserved at all interior nodes"
+        },
+        {
+          "check_name": "no_subtours_tetn",
+          "passed": true,
+          "detail": "All links move forward in time (acyclic)"
+        },
+        {
+          "check_name": "pruning_losslessness",
+          "passed": true,
+          "detail": "All 10 inter-destination paths exist"
+        }
+      ]
+    },
+    {
+      "name": "MDA3(c): New Delhi->Bhopal->Jhansi->Warangal->Vijayawada->Tiruchchirappalli",
+      "method": "TETN MDA3",
+      "status": "Optimal",
+      "objective": 150900.0,
+      "network_stats": {
+        "original_trains": 12873,
+        "original_rows": 237449,
+        "pruned_trains": 301,
+        "pruned_rows": 8476,
+        "removed_trains": 12572,
+        "reduction_pct": 96.43,
+        "final_nodes": 16952,
+        "final_links": 208590
+      },
+      "network_build_seconds": 1.8413,
+      "solve_time_seconds": 69.4626,
+      "total_time_seconds": 81.1754,
+      "verification_passed": false,
+      "tour_node_count": 34,
+      "tour_summary": [
+        {
+          "node_id": 2097,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 21600,
+          "station": "NEW DELHI"
+        },
+        {
+          "node_id": 2098,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 26580,
+          "station": "MATHURA JUNCTION"
+        },
+        {
+          "node_id": 2099,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 26640,
+          "station": "MATHURA JUNCTION"
+        },
+        {
+          "node_id": 2100,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 28620,
+          "station": "AGRA CANTT."
+        },
+        {
+          "node_id": 2101,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 28920,
+          "station": "AGRA CANTT."
+        },
+        {
+          "node_id": 2102,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 31260,
+          "station": "DHOLPUR JUNCTION"
+        },
+        {
+          "node_id": 2103,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 31320,
+          "station": "DHOLPUR JUNCTION"
+        },
+        {
+          "node_id": 2104,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 32460,
+          "station": "MORENA"
+        },
+        {
+          "node_id": 2105,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 32520,
+          "station": "MORENA"
+        },
+        {
+          "node_id": 2106,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 34080,
+          "station": "GWALIOR JUNCTION"
+        },
+        {
+          "node_id": 2107,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 34380,
+          "station": "GWALIOR JUNCTION"
+        },
+        {
+          "node_id": 2108,
+          "train_id": "12002",
+          "train_name": "NEW DELHI - BHOPAL HABIBGANJ SHATABDI EXPRESS",
+          "time_seconds": 38580,
+          "station": "JHANSI JUNCTION"
+        },
+        {
+          "node_id": 6291,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 44100,
+          "station": "JHANSI JUNCTION"
+        },
+        {
+          "node_id": 6292,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 57900,
+          "station": "BHOPAL JUNCTION"
+        },
+        {
+          "node_id": 6293,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 58500,
+          "station": "BHOPAL JUNCTION"
+        },
+        {
+          "node_id": 6294,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 79800,
+          "station": "NAGPUR JUNCTION"
+        },
+        {
+          "node_id": 6295,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 80400,
+          "station": "NAGPUR JUNCTION"
+        },
+        {
+          "node_id": 6296,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 91800,
+          "station": "BALHARSHAH JUNCTION"
+        },
+        {
+          "node_id": 6121,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 97500,
+          "station": "BALHARSHAH JUNCTION"
+        },
+        {
+          "node_id": 6122,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 109620,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 6123,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 109920,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 6124,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 123900,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 6349,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 125400,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 6350,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 151500,
+          "station": "CHENNAI EGMORE"
+        },
+        {
+          "node_id": 6351,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 152400,
+          "station": "CHENNAI EGMORE"
+        },
+        {
+          "node_id": 6352,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 154080,
+          "station": "TAMBARAM"
+        },
+        {
+          "node_id": 5885,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 154200,
+          "station": "TAMBARAM"
+        },
+        {
+          "node_id": 5886,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 155880,
+          "station": "CHENGALPATTU JUNCTION"
+        },
+        {
+          "node_id": 5887,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 156000,
+          "station": "CHENGALPATTU JUNCTION"
+        },
+        {
+          "node_id": 5888,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 161100,
+          "station": "VILLUPURAM JUNCTION"
+        }
+      ],
+      "checks": [
+        {
+          "check_name": "tour_completeness_tetn",
+          "passed": false,
+          "detail": "Missing stations: {'WL', 'TPJ', 'BPL', 'JHS', 'NDLS', 'BZA'}"
+        },
+        {
+          "check_name": "flow_conservation_tetn",
+          "passed": true,
+          "detail": "Flow conserved at all interior nodes"
+        },
+        {
+          "check_name": "no_subtours_tetn",
+          "passed": true,
+          "detail": "All links move forward in time (acyclic)"
+        },
+        {
+          "check_name": "pruning_losslessness",
+          "passed": true,
+          "detail": "All 30 inter-destination paths exist"
+        }
+      ]
+    },
+    {
+      "name": "MDA3(d): Kanpur->Bhopal->Jhansi->Warangal->Vijayawada->Tiruchchirappalli",
+      "method": "TETN MDA3",
+      "status": "Optimal",
+      "objective": 143700.0,
+      "network_stats": {
+        "original_trains": 12873,
+        "original_rows": 237449,
+        "pruned_trains": 325,
+        "pruned_rows": 9264,
+        "removed_trains": 12548,
+        "reduction_pct": 96.1,
+        "final_nodes": 18528,
+        "final_links": 227626
+      },
+      "network_build_seconds": 1.9757,
+      "solve_time_seconds": 43.5847,
+      "total_time_seconds": 56.3325,
+      "verification_passed": false,
+      "tour_node_count": 26,
+      "tour_summary": [
+        {
+          "node_id": 2525,
+          "train_id": "12104",
+          "train_name": "LUCKNOW JN. - PUNE SF EXPRESS",
+          "time_seconds": 28800,
+          "station": "KANPUR CENTRAL"
+        },
+        {
+          "node_id": 2526,
+          "train_id": "12104",
+          "train_name": "LUCKNOW JN. - PUNE SF EXPRESS",
+          "time_seconds": 35340,
+          "station": "ORAI"
+        },
+        {
+          "node_id": 2527,
+          "train_id": "12104",
+          "train_name": "LUCKNOW JN. - PUNE SF EXPRESS",
+          "time_seconds": 35640,
+          "station": "ORAI"
+        },
+        {
+          "node_id": 2528,
+          "train_id": "12104",
+          "train_name": "LUCKNOW JN. - PUNE SF EXPRESS",
+          "time_seconds": 42300,
+          "station": "JHANSI JUNCTION"
+        },
+        {
+          "node_id": 6623,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 44100,
+          "station": "JHANSI JUNCTION"
+        },
+        {
+          "node_id": 6624,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 57900,
+          "station": "BHOPAL JUNCTION"
+        },
+        {
+          "node_id": 6625,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 58500,
+          "station": "BHOPAL JUNCTION"
+        },
+        {
+          "node_id": 6626,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 79800,
+          "station": "NAGPUR JUNCTION"
+        },
+        {
+          "node_id": 6627,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 80400,
+          "station": "NAGPUR JUNCTION"
+        },
+        {
+          "node_id": 6628,
+          "train_id": "12650",
+          "train_name": "KARNATAKA SAMPARK KRANTI EXPRESS",
+          "time_seconds": 91800,
+          "station": "BALHARSHAH JUNCTION"
+        },
+        {
+          "node_id": 9081,
+          "train_id": "12804",
+          "train_name": "HAZRAT NIZAMUDDIN - VISAKHAPATNAM SWARNA JAYANTI EXPRESS",
+          "time_seconds": 97500,
+          "station": "BALHARSHAH JUNCTION"
+        },
+        {
+          "node_id": 9082,
+          "train_id": "12804",
+          "train_name": "HAZRAT NIZAMUDDIN - VISAKHAPATNAM SWARNA JAYANTI EXPRESS",
+          "time_seconds": 109620,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 6455,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 109920,
+          "station": "WARANGAL"
+        },
+        {
+          "node_id": 6456,
+          "train_id": "12646",
+          "train_name": "MILLENNIUM SF EXPRESS",
+          "time_seconds": 123900,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 6681,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 125400,
+          "station": "VIJAYAWADA JUNCTION"
+        },
+        {
+          "node_id": 6682,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 151500,
+          "station": "CHENNAI EGMORE"
+        },
+        {
+          "node_id": 6215,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 152400,
+          "station": "CHENNAI EGMORE"
+        },
+        {
+          "node_id": 6216,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 154080,
+          "station": "TAMBARAM"
+        },
+        {
+          "node_id": 6217,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 154200,
+          "station": "TAMBARAM"
+        },
+        {
+          "node_id": 6218,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 155880,
+          "station": "CHENGALPATTU JUNCTION"
+        },
+        {
+          "node_id": 6687,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 156000,
+          "station": "CHENGALPATTU JUNCTION"
+        },
+        {
+          "node_id": 6688,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 161100,
+          "station": "VILLUPURAM JUNCTION"
+        },
+        {
+          "node_id": 6689,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 161400,
+          "station": "VILLUPURAM JUNCTION"
+        },
+        {
+          "node_id": 6690,
+          "train_id": "12652",
+          "train_name": "TAMIL NADU SAMPARK KRANTI EXPRESS",
+          "time_seconds": 163680,
+          "station": "VRIDHACHALAM JUNCTION"
+        },
+        {
+          "node_id": 6223,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 163800,
+          "station": "VRIDHACHALAM JUNCTION"
+        },
+        {
+          "node_id": 6224,
+          "train_id": "12642",
+          "train_name": "THIRUKKURAL SF EXPRESS",
+          "time_seconds": 172500,
+          "station": "TIRUCHCHIRAPPALLI JUNCTION"
+        }
+      ],
+      "checks": [
+        {
+          "check_name": "tour_completeness_tetn",
+          "passed": false,
+          "detail": "Missing stations: {'WL', 'TPJ', 'BPL', 'JHS', 'CNB', 'BZA'}"
+        },
+        {
+          "check_name": "flow_conservation_tetn",
+          "passed": true,
+          "detail": "Flow conserved at all interior nodes"
+        },
+        {
+          "check_name": "no_subtours_tetn",
+          "passed": true,
+          "detail": "All links move forward in time (acyclic)"
+        },
+        {
+          "check_name": "pruning_losslessness",
+          "passed": true,
+          "detail": "All 30 inter-destination paths exist"
+        }
+      ]
+    }
+  ]
+}

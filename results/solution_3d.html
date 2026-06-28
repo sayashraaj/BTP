@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journey Planner — Solution</title>
+<style>
+:root {
+  --bg: #f1f5f9; --surface: #ffffff; --surface2: #d1d9e6;
+  --text: #0f172a; --text-muted: #475569; --accent: #4338ca;
+  --accent2: #6d28d9; --warn: #b45309; --success: #047857;
+  --border: #94a3b8; --font: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--font); padding: 32px; max-width: 960px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 28px; }
+h2 { font-size: 15px; font-weight: 600; color: var(--accent2); text-transform: uppercase; letter-spacing: 1.2px; margin: 32px 0 14px; }
+.card { background: var(--surface); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; border: 1px solid var(--surface2); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.summary-item label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 3px; }
+.summary-item span { font-size: 15px; font-weight: 600; }
+.summary-item span.tour-path { font-size: 13px; font-weight: 500; word-break: break-word; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 10px; color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--surface2); }
+td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+.mono { font-family: var(--mono); font-size: 12px; }
+.wait-row { background: #fffbeb; }
+.wait-row td { color: #92400e; font-style: italic; }
+.train-id { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; }
+.badge-arr { background: #d1fae5; color: #065f46; }
+.badge-dep { background: #e0e7ff; color: #3730a3; }
+.chart-container { display: flex; justify-content: center; padding: 12px 0; overflow-x: auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } body { padding: 16px; } }
+.footer { text-align: center; color: var(--text-muted); font-size: 11px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--surface2); }
+.route-banner { display: flex; align-items: center; gap: 0; flex-wrap: wrap; padding: 16px 20px; margin-bottom: 20px; }
+.route-node { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.route-node .role { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+.route-node .role-origin { color: var(--accent); }
+.route-node .role-via { color: var(--warn); }
+.route-node .role-dest { color: var(--success); }
+.route-node .station-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.route-arrow { font-size: 18px; color: var(--border); margin: 0 10px; padding-top: 10px; }
+</style>
+</head>
+<body>
+
+        <h1>Journey Planner — Solution</h1>
+        <p class="subtitle">3D Matrix IP Formulation (Chapter 2)</p>
+
+        <div class="card route-banner"><div class="route-node"><span class="role role-origin">Origin</span><span class="station-name">Origin</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-via">Via</span><span class="station-name">Node 2</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-via">Via</span><span class="station-name">Node 3</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-via">Via</span><span class="station-name">Node 4</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-dest">Return</span><span class="station-name">Origin</span></div></div>
+        <div class="card"><div class="summary-grid"><div class="summary-item"><label>Method</label><span>3D Matrix (Chapter 2)</span></div><div class="summary-item"><label>Status</label><span>Optimal</span></div><div class="summary-item"><label>Nodes</label><span>4</span></div><div class="summary-item"><label>Return time</label><span>11</span></div><div class="summary-item"><label>Tour</label><span class="tour-path">Origin → Node 2 → Node 3 → Node 4 → Origin</span></div><div class="summary-item"><label>Solve time</label><span>0.094s</span></div></div></div>
+
+        <div class="two-col">
+            <div>
+                <h2>Route Diagram</h2>
+                <div class="card"><div class="chart-container"><svg viewBox="0 0 500 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px"><defs><marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6366f1"/></marker></defs><line x1="267.0" y1="77.0" x2="353.0" y2="163.0" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<line x1="353.0" y1="197.0" x2="267.0" y2="283.0" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<line x1="233.0" y1="283.0" x2="147.0" y2="197.0" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<line x1="147.0" y1="163.0" x2="233.0" y2="77.0" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<circle cx="250.0" cy="60.0" r="22" fill="#4f46e5" stroke="#4f46e5" stroke-width="2.5"/>
+<text x="250.0" y="65.0" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">Origin</text>
+<circle cx="370.0" cy="180.0" r="22" fill="#ffffff" stroke="#4f46e5" stroke-width="2.5"/>
+<text x="370.0" y="185.0" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">Node 2</text>
+<circle cx="250.0" cy="300.0" r="22" fill="#ffffff" stroke="#4f46e5" stroke-width="2.5"/>
+<text x="250.0" y="305.0" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">Node 3</text>
+<circle cx="130.0" cy="180.0" r="22" fill="#ffffff" stroke="#4f46e5" stroke-width="2.5"/>
+<text x="130.0" y="185.0" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">Node 4</text></svg></div></div>
+            </div>
+            <div>
+                <h2>Visit Order &amp; Timing</h2>
+                <div class="card">
+                    <table>
+                        <thead><tr><th>Node</th><th>u (rank)</th><th>t (exit time)</th></tr></thead>
+                        <tbody><tr><td>Origin</td><td class="mono">0</td><td class="mono">0.0</td></tr><tr><td>Node 2</td><td class="mono">0</td><td class="mono">5.0</td></tr><tr><td>Node 3</td><td class="mono">1</td><td class="mono">10.0</td></tr><tr><td>Node 4</td><td class="mono">2</td><td class="mono">11.0</td></tr><tr><td>Return to Origin</td><td class="mono">-</td><td class="mono">11.0</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h2>Selected Links</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>From</th><th>To</th><th>Link</th><th>Depart</th><th>Arrive</th><th>Cost</th></tr></thead>
+                <tbody><tr><td>Origin</td><td>Node 2</td><td class="mono">k=1</td><td class="mono">0</td><td class="mono">5</td><td class="mono">5</td></tr><tr><td>Node 2</td><td>Node 3</td><td class="mono">k=1</td><td class="mono">5</td><td class="mono">10</td><td class="mono">5</td></tr><tr><td>Node 3</td><td>Node 4</td><td class="mono">k=1</td><td class="mono">10</td><td class="mono">11</td><td class="mono">1</td></tr><tr><td>Node 4</td><td>Origin</td><td class="mono">k=1</td><td class="mono">11</td><td class="mono">11</td><td class="mono">0</td></tr></tbody>
+            </table>
+        </div>
+        
+<div class="footer">Journey Planner IP &nbsp;·&nbsp; solve: 0.09</div>
+</body>
+</html>

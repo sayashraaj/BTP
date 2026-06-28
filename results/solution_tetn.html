@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journey Planner — Solution</title>
+<style>
+:root {
+  --bg: #f1f5f9; --surface: #ffffff; --surface2: #d1d9e6;
+  --text: #0f172a; --text-muted: #475569; --accent: #4338ca;
+  --accent2: #6d28d9; --warn: #b45309; --success: #047857;
+  --border: #94a3b8; --font: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--font); padding: 32px; max-width: 960px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 28px; }
+h2 { font-size: 15px; font-weight: 600; color: var(--accent2); text-transform: uppercase; letter-spacing: 1.2px; margin: 32px 0 14px; }
+.card { background: var(--surface); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; border: 1px solid var(--surface2); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.summary-item label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 3px; }
+.summary-item span { font-size: 15px; font-weight: 600; }
+.summary-item span.tour-path { font-size: 13px; font-weight: 500; word-break: break-word; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 10px; color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--surface2); }
+td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+.mono { font-family: var(--mono); font-size: 12px; }
+.wait-row { background: #fffbeb; }
+.wait-row td { color: #92400e; font-style: italic; }
+.train-id { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; }
+.badge-arr { background: #d1fae5; color: #065f46; }
+.badge-dep { background: #e0e7ff; color: #3730a3; }
+.chart-container { display: flex; justify-content: center; padding: 12px 0; overflow-x: auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } body { padding: 16px; } }
+.footer { text-align: center; color: var(--text-muted); font-size: 11px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--surface2); }
+.route-banner { display: flex; align-items: center; gap: 0; flex-wrap: wrap; padding: 16px 20px; margin-bottom: 20px; }
+.route-node { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.route-node .role { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+.route-node .role-origin { color: var(--accent); }
+.route-node .role-via { color: var(--warn); }
+.route-node .role-dest { color: var(--success); }
+.route-node .station-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.route-arrow { font-size: 18px; color: var(--border); margin: 0 10px; padding-top: 10px; }
+</style>
+</head>
+<body>
+
+        <h1>Journey Planner — Solution</h1>
+        <p class="subtitle">Time-Expanded Transit Network (Chapter 3)</p>
+
+        <div class="card route-banner"><div class="route-node"><span class="role role-origin">Origin</span><span class="station-name">CHENNAI CENTRAL</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-via">Via</span><span class="station-name">VIJAYAWADA JUNCTION</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-via">Via</span><span class="station-name">WARANGAL</span></div><span class="route-arrow">→</span><div class="route-node"><span class="role role-dest">Return</span><span class="station-name">CHENNAI CENTRAL</span></div></div>
+        <div class="card"><div class="summary-grid"><div class="summary-item"><label>Method</label><span>TETN (Chapter 3)</span></div><div class="summary-item"><label>Status</label><span>Optimal</span></div><div class="summary-item"><label>Total duration</label><span>29h 40m</span></div><div class="summary-item"><label>Train legs</label><span>4</span></div><div class="summary-item"><label>Transfers</label><span>3</span></div><div class="summary-item"><label>Wait time</label><span>10h 14m</span></div><div class="summary-item"><label>Objective</label><span>106800s</span></div><div class="summary-item"><label>Solve time</label><span>115.7s</span></div><div class="summary-item"><label>Pruning</label><span>12873 → 198 trains (97.36%)</span></div><div class="summary-item"><label>Network</label><span>12516 nodes, 136561 links</span></div></div></div>
+
+        <h2>Journey Timeline</h2>
+        <div class="card"><div class="chart-container"><svg viewBox="0 0 760 404" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px"><line x1="220.0" y1="40" x2="220.0" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="220.0" y="32" text-anchor="middle" fill="#64748b" font-size="10">22:00</text>
+<line x1="306.7" y1="40" x2="306.7" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="306.7" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 2, 02:56</text>
+<line x1="393.3" y1="40" x2="393.3" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="393.3" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 2, 07:53</text>
+<line x1="480.0" y1="40" x2="480.0" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="480.0" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 2, 12:50</text>
+<line x1="566.7" y1="40" x2="566.7" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="566.7" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 2, 17:46</text>
+<line x1="653.3" y1="40" x2="653.3" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="653.3" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 2, 22:43</text>
+<line x1="740.0" y1="40" x2="740.0" y2="384" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="740.0" y="32" text-anchor="middle" fill="#64748b" font-size="10">Day 3, 03:40</text>
+<text x="210" y="72.0" text-anchor="end" fill="#475569" font-size="10" font-style="normal">TAMIL NADU SF EXPRESS</text>
+<rect x="220.0" y="50" width="108.1" height="36" rx="4" fill="#6366f1" opacity="0.85"/>
+<text x="274.0" y="72.0" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="500">6h 10m</text>
+<text x="210" y="114.0" text-anchor="end" fill="#92400e" font-size="10" font-style="italic">Wait at VIJAYAWADA</text>
+<rect x="328.1" y="92" width="138.8" height="36" rx="4" fill="#fbbf24" opacity="0.85"/>
+<text x="397.5" y="114.0" text-anchor="middle" fill="#92400e" font-size="10" font-weight="500">7h 55m</text>
+<text x="210" y="156.0" text-anchor="end" fill="#475569" font-size="10" font-style="normal">SHALIMAR - SECUNDERABAD</text>
+<rect x="466.9" y="134" width="45.0" height="36" rx="4" fill="#8b5cf6" opacity="0.85"/>
+<text x="517.8" y="156.0" text-anchor="start" fill="#ffffff" font-size="10" font-weight="500">2h 34m</text>
+<text x="210" y="198.0" text-anchor="end" fill="#92400e" font-size="10" font-style="italic">Wait at WARANGAL</text>
+<rect x="511.8" y="176" width="17.2" height="36" rx="4" fill="#fbbf24" opacity="0.85"/>
+<text x="535.1" y="198.0" text-anchor="start" fill="#92400e" font-size="10" font-weight="500">59m</text>
+<text x="210" y="240.0" text-anchor="end" fill="#475569" font-size="10" font-style="normal">DEHRADUN - MADURAI SF EXPRES</text>
+<rect x="529.1" y="218" width="60.5" height="36" rx="4" fill="#a78bfa" opacity="0.85"/>
+<text x="559.3" y="240.0" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="500">3h 27m</text>
+<text x="210" y="282.0" text-anchor="end" fill="#92400e" font-size="10" font-style="italic">Wait at VIJAYAWADA</text>
+<rect x="589.6" y="260" width="23.4" height="36" rx="4" fill="#fbbf24" opacity="0.85"/>
+<text x="618.9" y="282.0" text-anchor="start" fill="#92400e" font-size="10" font-weight="500">1h 20m</text>
+<text x="210" y="324.0" text-anchor="end" fill="#475569" font-size="10" font-style="normal">PATNA - ERNAKULAM SF EXPRESS</text>
+<rect x="612.9" y="302" width="127.1" height="36" rx="4" fill="#7c3aed" opacity="0.85"/>
+<text x="676.5" y="324.0" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="500">7h 15m</text></svg></div></div>
+
+        <h2>Itinerary</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>Train</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Duration</th></tr></thead>
+                <tbody><tr><td>TAMIL NADU SF EXPRESS<br><span class="train-id">#12621</span></td><td>CHENNAI CENTRAL → VIJAYAWADA JUNCTION</td><td class="mono">22:00</td><td class="mono">Day 2, 04:10</td><td class="mono">6h 10m</td></tr><tr class="wait-row"><td colspan="2">⏳ Wait at VIJAYAWADA JUNCTION</td><td class="mono">Day 2, 04:10</td><td class="mono">Day 2, 12:05</td><td class="mono">7h 55m</td></tr><tr><td>SHALIMAR - SECUNDERABAD<br><span class="train-id">#12773</span></td><td>VIJAYAWADA JUNCTION → WARANGAL</td><td class="mono">Day 2, 12:05</td><td class="mono">Day 2, 14:39</td><td class="mono">2h 34m</td></tr><tr class="wait-row"><td colspan="2">⏳ Wait at WARANGAL</td><td class="mono">Day 2, 14:39</td><td class="mono">Day 2, 15:38</td><td class="mono">59m</td></tr><tr><td>DEHRADUN - MADURAI SF EXPRESS<br><span class="train-id">#12688</span></td><td>WARANGAL → VIJAYAWADA JUNCTION</td><td class="mono">Day 2, 15:38</td><td class="mono">Day 2, 19:05</td><td class="mono">3h 27m</td></tr><tr class="wait-row"><td colspan="2">⏳ Wait at VIJAYAWADA JUNCTION</td><td class="mono">Day 2, 19:05</td><td class="mono">Day 2, 20:25</td><td class="mono">1h 20m</td></tr><tr><td>PATNA - ERNAKULAM SF EXPRESS<br><span class="train-id">#22644</span></td><td>VIJAYAWADA JUNCTION → CHENNAI CENTRAL</td><td class="mono">Day 2, 20:25</td><td class="mono">Day 3, 03:40</td><td class="mono">7h 15m</td></tr></tbody>
+            </table>
+        </div>
+
+        <h2>All Stops</h2>
+        <div class="card">
+            <table>
+                <thead><tr><th>Node</th><th>Station</th><th>Train</th><th>Time</th><th>Type</th></tr></thead>
+                <tbody><tr><td class="mono">2677</td><td>CHENNAI CENTRAL</td><td>TAMIL NADU SF EXPRESS</td><td class="mono">22:00</td><td><span class="badge badge-dep">DEP</span></td></tr><tr><td class="mono">2678</td><td>VIJAYAWADA JUNCTION</td><td>TAMIL NADU SF EXPRESS</td><td class="mono">Day 2, 04:10</td><td><span class="badge badge-arr">ARR</span></td></tr><tr><td class="mono">4355</td><td>VIJAYAWADA JUNCTION</td><td>SHALIMAR - SECUNDERABAD</td><td class="mono">Day 2, 12:05</td><td><span class="badge badge-dep">DEP</span></td></tr><tr><td class="mono">4356</td><td>WARANGAL</td><td>SHALIMAR - SECUNDERABAD</td><td class="mono">Day 2, 14:39</td><td><span class="badge badge-arr">ARR</span></td></tr><tr><td class="mono">3557</td><td>WARANGAL</td><td>DEHRADUN - MADURAI SF EXPRESS</td><td class="mono">Day 2, 15:38</td><td><span class="badge badge-dep">DEP</span></td></tr><tr><td class="mono">3558</td><td>VIJAYAWADA JUNCTION</td><td>DEHRADUN - MADURAI SF EXPRESS</td><td class="mono">Day 2, 19:05</td><td><span class="badge badge-arr">ARR</span></td></tr><tr><td class="mono">10875</td><td>VIJAYAWADA JUNCTION</td><td>PATNA - ERNAKULAM SF EXPRESS</td><td class="mono">Day 2, 20:25</td><td><span class="badge badge-dep">DEP</span></td></tr><tr><td class="mono">10876</td><td>CHENNAI CENTRAL</td><td>PATNA - ERNAKULAM SF EXPRESS</td><td class="mono">Day 3, 03:40</td><td><span class="badge badge-arr">ARR</span></td></tr></tbody>
+            </table>
+        </div>
+        
+<div class="footer">Journey Planner IP &nbsp;·&nbsp; network: 1.70s &nbsp;|&nbsp; solve: 121.99</div>
+</body>
+</html>
